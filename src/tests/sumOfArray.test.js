@@ -1,0 +1,1 @@
+import sumOfArray from '../src/sumOfArray';

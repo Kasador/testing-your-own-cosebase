@@ -32,6 +32,7 @@ So, my advice: think deeply about the types of unexpected situations your code m
 - npm i babel-loader
 - npm i css-loader
 - npm i html-webpack-plugin
+- npm i jest
 
 # 📈🪶 Progress Screenshots/Code
 ### _This section will have all the screenshots & code for my updated progress while developing..._
@@ -104,5 +105,5 @@ module.exports = {
 ### Now, add the _npm_ **(Node Packages)** to your codebase...
 Here is the one line, **_easy install_**, for **all** the packages needed to start.
 ```bash
-npm i sass sass-loader style-loader webpack webpack-cli webpack-dev-server @babel/preset-env babel-loader css-loader html-webpack-plugin --save-dev
+npm i sass sass-loader style-loader webpack webpack-cli webpack-dev-server @babel/preset-env babel-loader css-loader jest html-webpack-plugin --save-dev
 ```
