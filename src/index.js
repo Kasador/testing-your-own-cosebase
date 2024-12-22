@@ -1,5 +1,6 @@
 import './index.scss'; // imports >>>
 /* REFS >>> Notes: All these methods return arrays, join, split, map, match, filter, reverse, reduce, etc... 
+
     1) https://jestjs.io/docs/getting-started
     2) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
     3) https://stackoverflow.com/questions/1669190/find-the-min-max-element-of-an-array-in-javascript
@@ -57,10 +58,11 @@ console.log('JS (JavaScript) file connected.');
     const sumOfArray = () => { // sum of array elements >>>
         // use regex expressions to filter user input 
         let userInput = document.getElementById('sum-of-array').value;
-        // userInput.replace(/[^0-9\.]/g,'');
+        // userInput.replace(/[^0-9\.]/g,''); // same as little d. 
         
         // userInput = parseInt(userInput); .match() only works with string values, not numbers! 
-        let stringToArr = userInput.match(/\d/g); // filter user input using regex // this will return an array with strings in the values. 
+        let stringToArr = userInput.match(/\d/g); // filter user input using regex // this will return an array with strings in the values. All input is a string, so no need to match strings. They already are.
+        let organizeOutput = stringToArr.join(', ');
         console.log(stringToArr, "array with string values"); 
         stringToArr = [...stringToArr].map(num => parseInt(num)); // string to number, .map() returns a new array and goes through all the values like a .forEach(), using [...Array], we can convert the string array into numbers and return another array, inputting it back into the prvious one.
         console.log(stringToArr, "array converted into number values");
@@ -70,36 +72,49 @@ console.log('JS (JavaScript) file connected.');
         // output
         let output = document.getElementById('sum-of-array-result');
         document.getElementById('sum-of-array').value = ''; // clear input on submit
-        output.innerHTML = sum + ` (${userInput})`; // output + user input 
+        output.innerHTML = sum + ` (${organizeOutput})`; // output + user input 
     }
 
     sumOfArrayBtn.addEventListener('click', sumOfArray); // first function event listener
 
     const reverseString = () => { // reverse string >>>
         let userInput = document.getElementById('reverse-string').value; // write if statement for error handling, see if user is using numbers etc <<< REMINDER >>>
-        let arr = userInput.split(''); // all together, no spaces, into an array
+        let arr = userInput.replace(/\d+/g, ''); // + is used to match in case digits are strung together, ex: test23 will replace 23, or remove; leaving test. small d is YES to numbers, big D is NO to numbers. I could also use .match(/[a-z]/g) to match all letters, or .match(/[A-Z]/g) to match all uppercase letters. Instead of finding the numbers and replacing them with '', which is nothing. 
+        let organizeOutput = arr;
+
+        console.log(arr)
+        arr = arr.split(''); // all together, no spaces, into an array
         arr = arr.reverse(); // reverse the array as is
         arr = arr.join(''); // now do the opposite of split, join the array back together, but with spaces
-
         console.log(arr);
 
         // output
         let output = document.getElementById('reverse-string-result');
         document.getElementById('reverse-string').value = '';
-        output.innerHTML = arr + ` (${userInput})`;
+        output.innerHTML = arr + ` (${organizeOutput})`;
     };
 
     reverseStringBtn.addEventListener('click', reverseString); // second function event listener
 
     const findMax = () => { // find max number in array >>>
-        const arr = [1, 2, 3, 4, 5];
-        const max = Math.max(...arr);
+        let userInput = document.getElementById('find-max').value;
+        let arr = userInput.match(/\d/g); // no + sign because I got parseInt() 
+        let organizeOutput = arr.join(', '); // output typed by user
+        arr = arr.map(num => parseInt(num)); // convert string to number
+        console.log(arr);
+        let max = Math.max(...arr); // Math.max() takes in a spread operator, which is used to take in an array of values, and find the max value.
+
         console.log(max);
+
+        // output
+        let output = document.getElementById('find-max-result');
+        document.getElementById('find-max').value = '';
+        output.innerHTML = max + ` (${organizeOutput})`;
     };
+
+    findMaxBtn.addEventListener('click', findMax); // third function event listener
 
     const capitalizeWords = () => { // capitalize words >>>
         
     };
-
-    findMax();
 })();
