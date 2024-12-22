@@ -164,7 +164,7 @@ console.log('JS (JavaScript) file connected.');
 })();
 ```
 
-### Feat: User can now type in their input (_**13691**_) and the function/application will add all numbers together, and then give an output. 
+### Feat: User can now type in their input (**_13691_**) and the function/application will add all numbers together, and then give an output. 
 <img src="https://github.com/user-attachments/assets/07b546a8-b8bb-4241-b2ad-8700ca7e30c1" width="500px">
 <img src="https://github.com/user-attachments/assets/e368af24-1118-4445-bb77-6f0fda588eba" width="500px">
 
@@ -223,6 +223,10 @@ const sumOfArrayBtn = document.getElementById('sum-of-array-btn');
     findMax();
 })();
 ```
+
+### Feat: User can now type in their input (**_test this string_**) and the function/application will reverse all words and then give an output. 
+<img src="https://github.com/user-attachments/assets/1f0214b1-d081-4279-aa82-9cec2394656d" width="500px">
+<img src="https://github.com/user-attachments/assets/85d30334-cfc7-4c2d-a857-58d33fa5054b" width="500px">
 
 ## #️⃣💻 _index.js_ full code/file
 
