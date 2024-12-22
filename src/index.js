@@ -14,6 +14,7 @@ import './index.scss'; // imports >>>
     11) https://www.w3schools.com/python/ref_list_reverse.asp // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse
     12) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
     13) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/split // https://www.w3schools.com/jsref/jsref_split.asp
+    14) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase
 
     not sure why I make a variable to put back the array I changed, when I could just put it back into the original array used, from the methods. 
     ----------------------------------------------------------------------------------------
@@ -75,8 +76,6 @@ console.log('JS (JavaScript) file connected.');
         output.innerHTML = sum + ` (${organizeOutput})`; // output + user input 
     }
 
-    sumOfArrayBtn.addEventListener('click', sumOfArray); // first function event listener
-
     const reverseString = () => { // reverse string >>>
         let userInput = document.getElementById('reverse-string').value; // write if statement for error handling, see if user is using numbers etc <<< REMINDER >>>
         let arr = userInput.replace(/\d+/g, ''); // + is used to match in case digits are strung together, ex: test23 will replace 23, or remove; leaving test. small d is YES to numbers, big D is NO to numbers. I could also use .match(/[a-z]/g) to match all letters, or .match(/[A-Z]/g) to match all uppercase letters. Instead of finding the numbers and replacing them with '', which is nothing. 
@@ -94,8 +93,6 @@ console.log('JS (JavaScript) file connected.');
         output.innerHTML = arr + ` (${organizeOutput})`;
     };
 
-    reverseStringBtn.addEventListener('click', reverseString); // second function event listener
-
     const findMax = () => { // find max number in array >>>
         let userInput = document.getElementById('find-max').value;
         let arr = userInput.match(/\d/g); // no + sign because I got parseInt() 
@@ -112,9 +109,60 @@ console.log('JS (JavaScript) file connected.');
         output.innerHTML = max + ` (${organizeOutput})`;
     };
 
-    findMaxBtn.addEventListener('click', findMax); // third function event listener
-
     const capitalizeWords = () => { // capitalize words >>>
-        
+        let userInput = document.getElementById('capitalize-words').value;
+        let arr = userInput.replace(/\d+/g, ''); // remove numbers from user input
+        let organizeOutput = arr; // output typed by user
+        console.log(arr);
+        arr = arr.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); // capitalize first letter of each word
+        console.log(arr);
+
+        // output
+        let output = document.getElementById('capitalize-words-result');
+        document.getElementById('capitalize-words').value = '';
+        output.innerHTML = arr + ` (${organizeOutput})`;
     };
+
+    // variables >>>
+    let sumofArrayValue = document.getElementById('sum-of-array');
+    let reverseStringValue = document.getElementById('reverse-string');
+    let findMaxValue = document.getElementById('find-max');
+    let capitalizeWordsValue = document.getElementById('capitalize-words');
+
+    // event listeners >>>
+    sumOfArrayBtn.addEventListener('click', () => {
+        if (sumofArrayValue !== null & sumofArrayValue.value !== '') { // if statement to check if element exists, then run function
+            sumOfArray();
+        } else {
+            console.log('You gotta input something first!');
+            alert('You gotta input something first!');
+        }
+    }); // first function event listener
+
+    reverseStringBtn.addEventListener('click', () => {
+        if (reverseStringValue !== null & reverseStringValue.value !== '') { // if statement to check if element exists, then run function
+            reverseString();
+        } else {
+            console.log('You gotta input something first!');
+            alert('You gotta input something first!');
+        }
+    }); // second function event listener
+
+    findMaxBtn.addEventListener('click', () => {
+        if (findMaxValue !== null & findMaxValue.value !== '') { // if statement to check if element exists, then run function
+            findMax();
+        } else {
+            console.log('You gotta input something first!');
+            alert('You gotta input something first!');
+        }
+    }); // third function event listener
+
+    capitalizeWordsBtn.addEventListener('click', () => {
+        if (capitalizeWordsValue !== null & capitalizeWordsValue.value !== '') { // if statement to check if element exists, then run function
+            capitalizeWords();
+        } else {
+            console.log('You gotta input something first!');
+            alert('You gotta input something first!');
+        }
+    }); // fourth function event listener
 })();
