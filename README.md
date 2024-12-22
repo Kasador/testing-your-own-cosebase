@@ -35,7 +35,7 @@ So, my advice: think deeply about the types of unexpected situations your code m
 - npm i jest
 
 # 📈🪶 Progress Screenshots/Code
-### _This section will have all the screenshots & code for my updated progress while developing..._
+### _This section will have all the screenshots & code for my updated progress while developing..._ 
 
 ## 🛠️ Setup 
 
@@ -106,6 +106,19 @@ module.exports = {
 Here is the one line, **_easy install_**, for **all** the packages needed to start.
 ```bash
 npm i sass sass-loader style-loader webpack webpack-cli webpack-dev-server @babel/preset-env babel-loader css-loader jest html-webpack-plugin --save-dev
+```
+
+## 🐛 Issues/Bugs
+
+### This worked and prevented the page from refreshing on event listeners of the buttons.
+
+```js
+// prevent refresh on form submit.
+    document.querySelectorAll('.form').forEach(form => {
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+        });
+    });
 ```
 
 ## 📘 Frontend
