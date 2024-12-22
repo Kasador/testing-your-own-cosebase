@@ -30,4 +30,5 @@ console.log('JS (JavaScript) file connected.');
     };
 
     sumOfArray();
+    findMax();
 })();

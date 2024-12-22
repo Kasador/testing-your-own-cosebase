@@ -3,8 +3,78 @@
 
 
 // color variables >>> the main color scheme
+$primary-color: #F17C7D; // using the primary color as the background color
+$secondary-color: #E8E8E8; // using the secondary color as the text color
+$surface-color: #3A3A3A; // using the surface color as the form background color
 
 body { // obviously, the body tag. Haha
-    background-color: green;
+    background-color: $primary-color;
+    color: $secondary-color; 
     font-family:Georgia, 'Times New Roman', Times, serif;
+}
+main {
+    header {
+        background-color: $secondary-color; 
+        color: $primary-color;
+        padding: 20px;
+        padding-top: 0px;
+        text-align: left;
+        border-bottom-right-radius: 100%;
+
+        h1 {
+            font-size: 2.5rem;
+            padding: 20px;
+        }
+        p {
+            font-style: italic;
+            padding-bottom: 40px;
+        }
+    }
+
+    .flex-forms-container {
+        display: flex;
+        margin: 20px;
+    }
+
+    .form {
+        background-color: $surface-color;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 30px;
+        width: 500px;
+        border-radius: 30px;
+        outline: 5px dashed $secondary-color;
+        border: 5px solid $primary-color;
+        
+
+        .form-inputs {
+            width: 200px;
+            padding: 5px;
+            margin: 15px;
+            border-radius: 10px;
+            border: 2px solid $primary-color;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: $primary-color;
+            color: $secondary-color;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: 2px solid $primary-color;
+
+            transition: all 0.3s;
+
+            &:hover {
+                background-color: $secondary-color;
+                color: $primary-color;
+            }
+        }
+    }
 }

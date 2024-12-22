@@ -7,7 +7,51 @@
     <title>Testing Your Own Codebase</title>
 </head>
 <body>
-    
+    <main>
+        <header>
+            <h1>Testing Your Own Codebase</h1>
+            <p>
+                This is a simple web application that runs tests before runtime on functions. <br />
+                You can fill out the forms and see different results for each.
+            </p>
+        </header>
+        <section class="flex-forms-container">
+            <form action="" id="sum-of-array-form" class="form">
+                <label for="sum-of-array" class="form-labels">Enter numbers; they will be added together.</label>
+                <input type="text" id="sum-of-array" placeholder="136" class="form-inputs" />
+                <h3 id="sum-of-array-result-text" class="form-result-texts">
+                    Result: <span id="sum-of-array-result">10</span>
+                </h3>
+                <button type="submit" id="sum-of-array-btn">Submit</button>
+            </form>
+            <form action="" id="reverse-string-form" class="form">
+                <label for="reverse-string" class="form-labels">Enter text; it will be reversed.</label>
+                <input type="text" id="reverse-string" placeholder="Enter text" class="form-inputs" />
+                <h3 id="reverse-string-result-text">
+                    Result: <span id="reverse-string-result">txet retnE</span>
+                </h3>
+                <button type="submit" id="reverse-string-btn">Submit</button>
+            </form>
+        </section>
+        <section class="flex-forms-container">
+            <form action="" id="find-max-form" class="form">
+                <label for="find-max" class="form-labels">Enter numbers; it will find the max.</label>
+                <input type="text" id="find-max" placeholder="136" class="form-inputs" />
+                <h3 id="find-max-result-text" class="form-result-texts">
+                    Result: <span id="find-max-result">6</span>
+                </h3>
+                <button type="submit" id="find-max-btn">Submit</button>
+            </form>
+            <form action="" id="capitalize-words-form" class="form">
+                <label for="capitalize-words" class="form-labels">Enter text; it will capitalize the words.</label>
+                <input type="text" id="capitalize-words" placeholder="Enter text" class="form-inputs" />
+                <h3 id="capitalize-words-result-text">
+                    Result: <span id="capitalize-words-result">Enter Text</span>
+                </h3>
+                <button type="submit" id="capitalize-words-btn">Submit</button>
+            </form>
+        </section>
+    </main>
     <script src="bundle.js" defer></script> <!-- webpack compile script -->
 </body>
 </html>
