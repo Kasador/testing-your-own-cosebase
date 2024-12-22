@@ -50,6 +50,9 @@ main {
         outline: 5px dashed $secondary-color;
         border: 5px solid $primary-color;
         
+        .form-labels {
+            font-weight: bold;
+        }
 
         .form-inputs {
             width: 200px;
@@ -59,6 +62,15 @@ main {
             border: 2px solid $primary-color;
         }
 
+        h3 {
+            color: lightgray
+
+        }
+
+        .results {
+            color: white;
+        }
+        
         button {
             padding: 10px;
             margin: 10px;
