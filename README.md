@@ -255,6 +255,20 @@ import './index.scss'; // imports >>>
 
         Instead of THIS >>> const arr = [...stringToArr].map(num => parseInt(num))
                             const sum = arr.reduce((acc, val) => acc + val);
+
+        <<< Again, same thing on the second func...
+    ----------------------------------------------------------------------------------------
+        Learning not to use a bunch of variables that are not needed... DRY CODE PLEASE!!!
+        
+        let userInput = document.getElementById('reverse-string').value; 
+        let arr = userInput.split('');
+        let reversedArr = arr.reverse(); 
+        let reversedStr = reversedArr.join('');
+
+        let userInput = document.getElementById('reverse-string').value; 
+        let arr = userInput.split(''); 
+        arr = arr.reverse(); 
+        arr = arr.join('');
 */
 
 console.log('JS (JavaScript) file connected.');
@@ -298,15 +312,15 @@ console.log('JS (JavaScript) file connected.');
     const reverseString = () => { // reverse string >>>
         let userInput = document.getElementById('reverse-string').value; // write if statement for error handling, see if user is using numbers etc <<< REMINDER >>>
         let arr = userInput.split(''); // all together, no spaces, into an array
-        let reversedArr = arr.reverse(); // reverse the array as is
-        let reversedStr = reversedArr.join(''); // now do the opposite of split, join the array back together, but with spaces
+        arr = arr.reverse(); // reverse the array as is
+        arr = arr.join(''); // now do the opposite of split, join the array back together, but with spaces
 
-        console.log(reversedStr);
+        console.log(arr);
 
         // output
         let output = document.getElementById('reverse-string-result');
         document.getElementById('reverse-string').value = '';
-        output.innerHTML = reversedStr + ` (${userInput})`;
+        output.innerHTML = arr + ` (${userInput})`;
     };
 
     reverseStringBtn.addEventListener('click', reverseString); // second function event listener
