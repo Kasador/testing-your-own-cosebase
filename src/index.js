@@ -13,6 +13,14 @@ import './index.scss'; // imports >>>
     11) https://www.w3schools.com/python/ref_list_reverse.asp // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse
     12) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
     13) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/split // https://www.w3schools.com/jsref/jsref_split.asp
+
+    not sure why I make a variable to put back the array I changed, when I could just put it back into the original array used, from the methods. 
+    ----------------------------------------------------------------------------------------
+        Used THIS >>> stringToArr = [...stringToArr].map(num => parseInt(num))
+                      const sum = stringToArr.reduce((acc, val) => acc + val);
+
+        Instead of THIS >>> const arr = [...stringToArr].map(num => parseInt(num))
+                            const sum = arr.reduce((acc, val) => acc + val);
 */
 
 console.log('JS (JavaScript) file connected.');
@@ -40,9 +48,9 @@ console.log('JS (JavaScript) file connected.');
         // userInput = parseInt(userInput); .match() only works with string values, not numbers! 
         let stringToArr = userInput.match(/\d/g); // filter user input using regex // this will return an array with strings in the values. 
         console.log(stringToArr, "array with string values"); 
-        const arr = [...stringToArr].map(num => parseInt(num)); // string to number, .map() returns a new array and goes through all the values like a .forEach(), using [...Array], we can convert the string array into numbers and return another array, inputting it back into the prvious one.
-        console.log(arr, "array converted into number values");
-        const sum = arr.reduce((acc, val) => acc + val); // reduce() method takes in 3 total parameters, however 2 are required while 1 is not. It uses a callbackFn to increase in index pos, and if not specified for the 3 paramenter, it will be of index [0], if you wanted to start at the 3rd element[2], then it will be Array.reduce(callbackFn, value, 2). 2 being the initialValue.
+        stringToArr = [...stringToArr].map(num => parseInt(num)); // string to number, .map() returns a new array and goes through all the values like a .forEach(), using [...Array], we can convert the string array into numbers and return another array, inputting it back into the prvious one.
+        console.log(stringToArr, "array converted into number values");
+        const sum = stringToArr.reduce((acc, val) => acc + val); // reduce() method takes in 3 total parameters, however 2 are required while 1 is not. It uses a callbackFn to increase in index pos, and if not specified for the 3 paramenter, it will be of index [0], if you wanted to start at the 3rd element[2], then it will be Array.reduce(callbackFn, value, 2). 2 being the initialValue.
         console.log(sum);
         
         // output
