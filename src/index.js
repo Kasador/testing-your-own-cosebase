@@ -83,9 +83,9 @@ console.log('JS (JavaScript) file connected.');
         let organizeOutput = arr;
 
         console.log(arr)
-        arr = arr.split(''); // all together, no spaces, into an array
-        arr = arr.reverse(); // reverse the array as is
-        arr = arr.join(''); // now do the opposite of split, join the array back together, but with spaces
+        arr = arr.split(''); // split all strings up, one letter at a time, put a space in between 
+        arr = arr.reverse(); // reverse the array as is, one letter at a time, 
+        arr = arr.join(''); // now do the opposite of split, join the letters back together, into words, add spaces
         console.log(arr);
 
         // output
