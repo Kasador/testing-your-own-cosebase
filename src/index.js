@@ -9,13 +9,19 @@ import './index.scss'; // imports >>>
     7) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
     8) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match // https://stackoverflow.com/questions/18619785/using-regex-to-match-digits
     9) https://www.freecodecamp.org/news/4-main-differences-between-foreach-and-map/
-    10) 
+    10) https://stackoverflow.com/questions/19454310/stop-form-refreshing-page-on-submit
 */
 
 console.log('JS (JavaScript) file connected.');
 // variables >>>
 const sumOfArrayBtn = document.getElementById('sum-of-array-btn');
 (() => { // IIFE >>>
+    // prevent refresh on form submit
+    document.querySelectorAll('.form').forEach(form => {
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+        });
+    });
     // const output = []; // output array, >>> didn't use due to the fact that .match() actually returns an array, which is then used to be filtered and stored into a new array value, called arr.
     const sumOfArray = () => { // sum of array elements >>>
         let userInput = document.getElementById('sum-of-array').value;
