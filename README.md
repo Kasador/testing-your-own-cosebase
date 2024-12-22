@@ -365,7 +365,7 @@ console.log('JS (JavaScript) file connected.');
 
     // event listeners >>>
     sumOfArrayBtn.addEventListener('click', () => {
-        if (sumofArrayValue !== null & sumofArrayValue.value !== '') { // if statement to check if element exists, then run function
+        if (sumofArrayValue !== null & sumofArrayValue.value !== '') {
             sumOfArray();
         } else {
             console.log('You gotta input something first!');
@@ -374,7 +374,7 @@ console.log('JS (JavaScript) file connected.');
     }); // first function event listener
 
     reverseStringBtn.addEventListener('click', () => {
-        if (reverseStringValue !== null & reverseStringValue.value !== '') { // if statement to check if element exists, then run function
+        if (reverseStringValue !== null & reverseStringValue.value !== '') {
             reverseString();
         } else {
             console.log('You gotta input something first!');
@@ -383,7 +383,7 @@ console.log('JS (JavaScript) file connected.');
     }); // second function event listener
 
     findMaxBtn.addEventListener('click', () => {
-        if (findMaxValue !== null & findMaxValue.value !== '') { // if statement to check if element exists, then run function
+        if (findMaxValue !== null & findMaxValue.value !== '') {
             findMax();
         } else {
             console.log('You gotta input something first!');
@@ -392,7 +392,7 @@ console.log('JS (JavaScript) file connected.');
     }); // third function event listener
 
     capitalizeWordsBtn.addEventListener('click', () => {
-        if (capitalizeWordsValue !== null & capitalizeWordsValue.value !== '') { // if statement to check if element exists, then run function
+        if (capitalizeWordsValue !== null & capitalizeWordsValue.value !== '') {
             capitalizeWords();
         } else {
             console.log('You gotta input something first!');
