@@ -168,6 +168,7 @@ console.log('JS (JavaScript) file connected.');
 <img src="https://github.com/user-attachments/assets/07b546a8-b8bb-4241-b2ad-8700ca7e30c1" width="500px">
 <img src="https://github.com/user-attachments/assets/e368af24-1118-4445-bb77-6f0fda588eba" width="500px">
 
+### The Code
 ```js
 import './index.scss'; // imports >>>
 /* REFS >>> 
