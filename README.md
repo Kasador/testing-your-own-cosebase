@@ -33,11 +33,15 @@ So, my advice: think deeply about the types of unexpected situations your code m
 - npm i css-loader
 - npm i html-webpack-plugin
 - npm i jest
+- npm i babel-jest
 
 # 📈🪶 Progress Screenshots/Code
 ### _This section will have all the screenshots & code for my updated progress while developing..._ 
 
 ## 🛠️ Setup 
+
+### Tell me you code, without tellin' me you code
+![Screenshot 2024-12-22 181220](https://github.com/user-attachments/assets/3a8d1a61-e1b1-4294-a8d8-1699875f7238)
 
 ### Create a _webpack.config.js_ file and add the following...
 ```js
@@ -105,7 +109,7 @@ module.exports = {
 ### Now, add the _npm_ **(Node Packages)** to your codebase...
 Here is the one line, **_easy install_**, for **all** the packages needed to start.
 ```bash
-npm i sass sass-loader style-loader webpack webpack-cli webpack-dev-server @babel/preset-env babel-loader css-loader jest html-webpack-plugin --save-dev
+npm i sass sass-loader style-loader webpack webpack-cli webpack-dev-server @babel/preset-env babel-loader css-loader jest babel-jest html-webpack-plugin --save-dev
 ```
 
 ## 🐛 Issues/Bugs
@@ -121,10 +125,80 @@ npm i sass sass-loader style-loader webpack webpack-cli webpack-dev-server @babe
     });
 ```
 
+### Should of used **TypeScript...** That's my only regret. Hahaha... Probably would have coded this in 27 lines of code with all the error handling and data types specified. Pretty sure my tests failed due to coding and using ES6 methods/sytnax. 
+
+Wow, _jest_ is really difficult to setup right and use out of the box. It's not like you slap an import in a file or just do an _npm i jest_ and bam, you're good to go. **Wrong**, it's a lot of setup and configuration, which is just wild to me as DevOps shouldn't be this hard, because at that point I would be debugging to just debug? Wait... what? I ran tests, and they failed, but the main problem I am having is the configuration due to the fact I chose to use ES6 modules, which is not supported by Jest; kinda... I am also using webpack and I will have to use CommonJS modules, which is the default for Jest. I will have to change the export and import statements to CommonJS. Jest is really difficult to setup, its not hard to write or make tests for the functions, documentation has it all, minus a friendly setup guide. Even using a VSCode extension didn't help much. 
+
+### Long story short. **_Documentation is everything_**. I mean, their troubleshooting guide is outdated too...
+```bash
+● Test suite failed to run
+                                                                                                   
+    Jest encountered an unexpected token
+
+    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+
+    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+
+    By default "node_modules" folder is ignored by transformers.
+
+    Here's what you can do:
+     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+     • If you need a custom transformation specify a "transform" option in your config.
+     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+
+    You'll find more details and examples of these config options in the docs:
+    https://jestjs.io/docs/configuration
+    For information about custom transformations, see:
+    https://jestjs.io/docs/code-transformation
+```
+
+### jest.config.js 
+```js
+module.exports = {
+    testEnvironment: 'node', 
+    transform: {
+        '^.+\\.jsx?$': 'babel-jest', 
+    },
+    moduleFileExtensions: ['js', 'json', 'jsx', 'node'], 
+    moduleNameMapper: {
+        '\\.(css|scss)$': 'identity-obj-proxy', 
+    },
+    testMatch: ['**/tests/**/*.test.js'], 
+    verbose: true,
+    collectCoverage: true, 
+    collectCoverageFrom: [
+        'src/**/*.js', 
+        '!src/**/index.js',
+        '!src/**/__mocks__/**', 
+    ],
+    coverageThreshold: {
+        global: {
+            branches: 80,
+            functions: 80,
+            lines: 80,
+            statements: 80,
+        },
+    },
+    coverageDirectory: 'coverage', 
+    coverageReporters: ['text', 'lcov', 'html'], 
+    transformIgnorePatterns: ['/node_modules/'], 
+};
+```
+
+![Screenshot 2024-12-22 174250](https://github.com/user-attachments/assets/7a69db0f-5368-4619-82ca-99089cd77e1a)
+![Screenshot 2024-12-22 174315](https://github.com/user-attachments/assets/18ee359c-7137-4e9c-9873-acb58605a76c)
+![Screenshot 2024-12-22 174333](https://github.com/user-attachments/assets/a894848e-c9b5-4637-a7d7-5f5ae8c6a444)
+![Screenshot 2024-12-22 175903](https://github.com/user-attachments/assets/a5fb596a-06d1-43e1-8204-f6b03ac40cf6)
+
 ## 📘 Frontend
 
 ### Feat: UI/UX for the application is completed, working on functionality, testing, and filtering user inputs.
 <img src="https://github.com/user-attachments/assets/7b5626eb-4cea-49a6-96aa-e0e8216df933" width="500px">
+
+### Feat: Mobile friendly. 
+<img src="https://github.com/user-attachments/assets/3c7b139b-e359-4ec5-883a-b3eaf12e29c4" width="500px">
 
 ## 📖 Backend
 ```js
@@ -234,6 +308,8 @@ const sumOfArrayBtn = document.getElementById('sum-of-array-btn');
 ```js 
 import './index.scss'; // imports >>>
 /* REFS >>> Notes: All these methods return arrays, join, split, map, match, filter, reverse, reduce, etc... 
+    Should of used TypeScript... That's my only regret. Hahaha... Probably would have coded this in 27 lines of code with all the error handling and data types specified.
+----------------------------------------------------------------------------------------
 
     1) https://jestjs.io/docs/getting-started
     2) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
@@ -249,6 +325,10 @@ import './index.scss'; // imports >>>
     12) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
     13) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/split // https://www.w3schools.com/jsref/jsref_split.asp
     14) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase
+    15) https://jestjs.io/docs/configuration
+    16) https://jestjs.io/docs/api#describename-fn
+    17) https://jestjs.io/docs/using-matchers // https://jestjs.io/docs/expect // https://jestjs.io/docs/expect#tobevalue // https://stackoverflow.com/questions/30027494/how-to-write-a-jest-configuration-file // https://jestjs.io/docs/api // https://jestjs.io/docs // https://github.com/kulshekhar/ts-jest/issues/1940 
+    18) https://jestjs.io/docs/troubleshooting // https://jestjs.io/docs/code-transformation
 
     not sure why I make a variable to put back the array I changed, when I could just put it back into the original array used, from the methods. 
     ----------------------------------------------------------------------------------------
@@ -271,6 +351,8 @@ import './index.scss'; // imports >>>
         let arr = userInput.split(''); 
         arr = arr.reverse(); 
         arr = arr.join('');
+    ----------------------------------------------------------------------------------------
+        I ran tests, and they failed, but the main problem I am having is configuration due to the fact I chose to use ES6 modules, which is not supported by Jest. I am also using webpack and I will have to use CommonJS modules, which is the default for Jest. I will have to change the export and import statements to CommonJS. Jest is really difficult to setup, its not hard to write or make tests for the functions...
 */
 
 console.log('JS (JavaScript) file connected.');
@@ -290,9 +372,10 @@ console.log('JS (JavaScript) file connected.');
     });
 
     // const output = []; // output array, >>> didn't use due to the fact that .match() actually returns an array, which is then used to be filtered and stored into a new array value, called arr.
-    const sumOfArray = () => { // sum of array elements >>>
+    function sumOfArray(num) { // sum of array elements >>> JEST does not work! With ES6 modueles, which is modern development, insane! And if you want it to work then the setup is a pain and not right out of the box. I just don't see how this can be a popular choice for dev ops specifically when everything is developed and tested in ES6 modules, even ReactJS, VueJS, NextJS, AngularJS, etc... 
+
         // use regex expressions to filter user input 
-        let userInput = document.getElementById('sum-of-array').value;
+        let userInput = num;
         // userInput.replace(/[^0-9\.]/g,''); // same as little d. 
         
         // userInput = parseInt(userInput); .match() only works with string values, not numbers! 
@@ -310,8 +393,8 @@ console.log('JS (JavaScript) file connected.');
         output.innerHTML = sum + ` (${organizeOutput})`; // output + user input 
     }
 
-    const reverseString = () => { // reverse string >>>
-        let userInput = document.getElementById('reverse-string').value; // write if statement for error handling, see if user is using numbers etc <<< REMINDER >>>
+    const reverseString = (str) => { // reverse string >>>
+        let userInput = str; // write if statement for error handling, see if user is using numbers etc <<< REMINDER >>>
         let arr = userInput.replace(/\d+/g, ''); // + is used to match in case digits are strung together, ex: test23 will replace 23, or remove; leaving test. small d is YES to numbers, big D is NO to numbers. I could also use .match(/[a-z]/g) to match all letters, or .match(/[A-Z]/g) to match all uppercase letters. Instead of finding the numbers and replacing them with '', which is nothing. 
         let organizeOutput = arr;
 
@@ -327,8 +410,8 @@ console.log('JS (JavaScript) file connected.');
         output.innerHTML = arr + ` (${organizeOutput})`;
     };
 
-    const findMax = () => { // find max number in array >>>
-        let userInput = document.getElementById('find-max').value;
+    const findMax = (num) => { // find max number in array >>>
+        let userInput = num;
         let arr = userInput.match(/\d/g); // no + sign because I got parseInt() 
         let organizeOutput = arr.join(', '); // output typed by user
         arr = arr.map(num => parseInt(num)); // convert string to number
@@ -343,8 +426,8 @@ console.log('JS (JavaScript) file connected.');
         output.innerHTML = max + ` (${organizeOutput})`;
     };
 
-    const capitalizeWords = () => { // capitalize words >>>
-        let userInput = document.getElementById('capitalize-words').value;
+    const capitalizeWords = (str) => { // capitalize words >>>
+        let userInput = str;
         let arr = userInput.replace(/\d+/g, ''); // remove numbers from user input
         let organizeOutput = arr; // output typed by user
         console.log(arr);
@@ -356,7 +439,7 @@ console.log('JS (JavaScript) file connected.');
         document.getElementById('capitalize-words').value = '';
         output.innerHTML = arr + ` (${organizeOutput})`;
     };
-
+    
     // variables >>>
     let sumofArrayValue = document.getElementById('sum-of-array');
     let reverseStringValue = document.getElementById('reverse-string');
@@ -366,7 +449,7 @@ console.log('JS (JavaScript) file connected.');
     // event listeners >>>
     sumOfArrayBtn.addEventListener('click', () => {
         if (sumofArrayValue !== null & sumofArrayValue.value !== '') {
-            sumOfArray();
+            sumOfArray(sumofArrayValue.value);
         } else {
             console.log('You gotta input something first!');
             alert('You gotta input something first!');
@@ -375,7 +458,7 @@ console.log('JS (JavaScript) file connected.');
 
     reverseStringBtn.addEventListener('click', () => {
         if (reverseStringValue !== null & reverseStringValue.value !== '') {
-            reverseString();
+            reverseString(reverseStringValue.value);
         } else {
             console.log('You gotta input something first!');
             alert('You gotta input something first!');
@@ -384,7 +467,7 @@ console.log('JS (JavaScript) file connected.');
 
     findMaxBtn.addEventListener('click', () => {
         if (findMaxValue !== null & findMaxValue.value !== '') {
-            findMax();
+            findMax(findMaxValue.value);
         } else {
             console.log('You gotta input something first!');
             alert('You gotta input something first!');
@@ -393,11 +476,27 @@ console.log('JS (JavaScript) file connected.');
 
     capitalizeWordsBtn.addEventListener('click', () => {
         if (capitalizeWordsValue !== null & capitalizeWordsValue.value !== '') {
-            capitalizeWords();
+            capitalizeWords(capitalizeWordsValue.value);
         } else {
             console.log('You gotta input something first!');
             alert('You gotta input something first!');
         }
     }); // fourth function event listener
 })();
+
+// export default { // for the tests files >>>
+//     sumOfArray,
+//     reverseString,
+//     findMax,
+//     capitalizeWords
+// }; 
+
+// module.exports = { // for the tests files >>>
+//         sumOfArray,
+//         reverseString,
+//         findMax,
+//         capitalizeWords
+//     };
+
+    // I ran tests, and they failed, but the main problem I am having is configuration due to the fact I chose to use ES6 modules, which is not supported by Jest. I am also using webpack and I will have to use CommonJS modules, which is the default for Jest. I will have to change the export and import statements to CommonJS. Jest is really difficult to setup, its not hard to write or make tests for the functions...
 ```

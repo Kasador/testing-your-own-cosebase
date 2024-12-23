@@ -16,11 +16,6 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -56,5 +51,5 @@ module.exports = {
     port: 9001,
     hot: false
   },
-  mode: 'development',
+  mode: process.env.NODE_ENV || 'development',
 };

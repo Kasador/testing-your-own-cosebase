@@ -1,5 +1,7 @@
 import './index.scss'; // imports >>>
 /* REFS >>> Notes: All these methods return arrays, join, split, map, match, filter, reverse, reduce, etc... 
+    Should of used TypeScript... That's my only regret. Hahaha... Probably would have coded this in 27 lines of code with all the error handling and data types specified.
+----------------------------------------------------------------------------------------
 
     1) https://jestjs.io/docs/getting-started
     2) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
@@ -15,6 +17,10 @@ import './index.scss'; // imports >>>
     12) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
     13) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/split // https://www.w3schools.com/jsref/jsref_split.asp
     14) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase
+    15) https://jestjs.io/docs/configuration
+    16) https://jestjs.io/docs/api#describename-fn
+    17) https://jestjs.io/docs/using-matchers // https://jestjs.io/docs/expect // https://jestjs.io/docs/expect#tobevalue // https://stackoverflow.com/questions/30027494/how-to-write-a-jest-configuration-file // https://jestjs.io/docs/api // https://jestjs.io/docs // https://github.com/kulshekhar/ts-jest/issues/1940 
+    18) https://jestjs.io/docs/troubleshooting // https://jestjs.io/docs/code-transformation
 
     not sure why I make a variable to put back the array I changed, when I could just put it back into the original array used, from the methods. 
     ----------------------------------------------------------------------------------------
@@ -37,6 +43,8 @@ import './index.scss'; // imports >>>
         let arr = userInput.split(''); 
         arr = arr.reverse(); 
         arr = arr.join('');
+    ----------------------------------------------------------------------------------------
+        I ran tests, and they failed, but the main problem I am having is configuration due to the fact I chose to use ES6 modules, which is not supported by Jest. I am also using webpack and I will have to use CommonJS modules, which is the default for Jest. I will have to change the export and import statements to CommonJS. Jest is really difficult to setup, its not hard to write or make tests for the functions...
 */
 
 console.log('JS (JavaScript) file connected.');
@@ -56,9 +64,10 @@ console.log('JS (JavaScript) file connected.');
     });
 
     // const output = []; // output array, >>> didn't use due to the fact that .match() actually returns an array, which is then used to be filtered and stored into a new array value, called arr.
-    const sumOfArray = () => { // sum of array elements >>>
+    function sumOfArray(num) { // sum of array elements >>> JEST does not work! With ES6 modueles, which is modern development, insane! And if you want it to work then the setup is a pain and not right out of the box. I just don't see how this can be a popular choice for dev ops specifically when everything is developed and tested in ES6 modules, even ReactJS, VueJS, NextJS, AngularJS, etc... 
+
         // use regex expressions to filter user input 
-        let userInput = document.getElementById('sum-of-array').value;
+        let userInput = num;
         // userInput.replace(/[^0-9\.]/g,''); // same as little d. 
         
         // userInput = parseInt(userInput); .match() only works with string values, not numbers! 
@@ -76,8 +85,8 @@ console.log('JS (JavaScript) file connected.');
         output.innerHTML = sum + ` (${organizeOutput})`; // output + user input 
     }
 
-    const reverseString = () => { // reverse string >>>
-        let userInput = document.getElementById('reverse-string').value; // write if statement for error handling, see if user is using numbers etc <<< REMINDER >>>
+    const reverseString = (str) => { // reverse string >>>
+        let userInput = str; // write if statement for error handling, see if user is using numbers etc <<< REMINDER >>>
         let arr = userInput.replace(/\d+/g, ''); // + is used to match in case digits are strung together, ex: test23 will replace 23, or remove; leaving test. small d is YES to numbers, big D is NO to numbers. I could also use .match(/[a-z]/g) to match all letters, or .match(/[A-Z]/g) to match all uppercase letters. Instead of finding the numbers and replacing them with '', which is nothing. 
         let organizeOutput = arr;
 
@@ -93,8 +102,8 @@ console.log('JS (JavaScript) file connected.');
         output.innerHTML = arr + ` (${organizeOutput})`;
     };
 
-    const findMax = () => { // find max number in array >>>
-        let userInput = document.getElementById('find-max').value;
+    const findMax = (num) => { // find max number in array >>>
+        let userInput = num;
         let arr = userInput.match(/\d/g); // no + sign because I got parseInt() 
         let organizeOutput = arr.join(', '); // output typed by user
         arr = arr.map(num => parseInt(num)); // convert string to number
@@ -109,8 +118,8 @@ console.log('JS (JavaScript) file connected.');
         output.innerHTML = max + ` (${organizeOutput})`;
     };
 
-    const capitalizeWords = () => { // capitalize words >>>
-        let userInput = document.getElementById('capitalize-words').value;
+    const capitalizeWords = (str) => { // capitalize words >>>
+        let userInput = str;
         let arr = userInput.replace(/\d+/g, ''); // remove numbers from user input
         let organizeOutput = arr; // output typed by user
         console.log(arr);
@@ -122,7 +131,7 @@ console.log('JS (JavaScript) file connected.');
         document.getElementById('capitalize-words').value = '';
         output.innerHTML = arr + ` (${organizeOutput})`;
     };
-
+    
     // variables >>>
     let sumofArrayValue = document.getElementById('sum-of-array');
     let reverseStringValue = document.getElementById('reverse-string');
@@ -132,7 +141,7 @@ console.log('JS (JavaScript) file connected.');
     // event listeners >>>
     sumOfArrayBtn.addEventListener('click', () => {
         if (sumofArrayValue !== null & sumofArrayValue.value !== '') {
-            sumOfArray();
+            sumOfArray(sumofArrayValue.value);
         } else {
             console.log('You gotta input something first!');
             alert('You gotta input something first!');
@@ -141,7 +150,7 @@ console.log('JS (JavaScript) file connected.');
 
     reverseStringBtn.addEventListener('click', () => {
         if (reverseStringValue !== null & reverseStringValue.value !== '') {
-            reverseString();
+            reverseString(reverseStringValue.value);
         } else {
             console.log('You gotta input something first!');
             alert('You gotta input something first!');
@@ -150,7 +159,7 @@ console.log('JS (JavaScript) file connected.');
 
     findMaxBtn.addEventListener('click', () => {
         if (findMaxValue !== null & findMaxValue.value !== '') {
-            findMax();
+            findMax(findMaxValue.value);
         } else {
             console.log('You gotta input something first!');
             alert('You gotta input something first!');
@@ -159,10 +168,26 @@ console.log('JS (JavaScript) file connected.');
 
     capitalizeWordsBtn.addEventListener('click', () => {
         if (capitalizeWordsValue !== null & capitalizeWordsValue.value !== '') {
-            capitalizeWords();
+            capitalizeWords(capitalizeWordsValue.value);
         } else {
             console.log('You gotta input something first!');
             alert('You gotta input something first!');
         }
     }); // fourth function event listener
 })();
+
+// export default { // for the tests files >>>
+//     sumOfArray,
+//     reverseString,
+//     findMax,
+//     capitalizeWords
+// }; 
+
+// module.exports = { // for the tests files >>>
+//         sumOfArray,
+//         reverseString,
+//         findMax,
+//         capitalizeWords
+//     };
+
+    // I ran tests, and they failed, but the main problem I am having is configuration due to the fact I chose to use ES6 modules, which is not supported by Jest. I am also using webpack and I will have to use CommonJS modules, which is the default for Jest. I will have to change the export and import statements to CommonJS. Jest is really difficult to setup, its not hard to write or make tests for the functions...

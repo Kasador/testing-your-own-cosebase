@@ -12,24 +12,25 @@ body { // obviously, the body tag. Haha
     color: $secondary-color; 
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
-main {
-    header {
-        background-color: $secondary-color; 
-        color: $primary-color;
-        padding: 20px;
-        padding-top: 0px;
-        text-align: left;
-        border-bottom-right-radius: 100%;
+header {
+    background-color: $secondary-color; 
+    color: $primary-color;
+    padding: 20px;
+    padding-top: 0px;
+    text-align: left;
+    border-bottom-right-radius: 100%;
 
-        h1 {
-            font-size: 2.5rem;
-            padding: 20px;
-        }
-        p {
-            font-style: italic;
-            padding-bottom: 40px;
-        }
+    h1 {
+        font-size: 2.5rem;
+        padding: 20px;
     }
+    p {
+        font-style: italic;
+        padding-bottom: 40px;
+    }
+}
+
+main {
 
     .flex-forms-container {
         display: flex;
@@ -89,5 +90,22 @@ main {
                 color: $primary-color;
             }
         }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .flex-forms-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .form {
+        width: 300px !important;
+        padding: 20px;
+        margin: 20px;
+    }
+    header {
+        border-bottom-right-radius: 50%;
     }
 }
