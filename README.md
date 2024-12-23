@@ -125,7 +125,7 @@ npm i sass sass-loader style-loader webpack webpack-cli webpack-dev-server @babe
     });
 ```
 
-### Should of used **TypeScript...** That's my only regret. Hahaha... Probably would have coded this in 27 lines of code with all the error handling and data types specified. Pretty sure my tests failed due to coding and using ES6 methods/sytnax. 
+### Should of used **TypeScript...** That's my only regret. Hahaha... Probably would have coded this in 27 lines of code with all the error handling and data types specified. Pretty sure my tests failed due to coding and using ES6 methods/syntax. 
 
 Wow, _jest_ is really difficult to setup right and use out of the box. It's not like you slap an import in a file or just do an _npm i jest_ and bam, you're good to go. **Wrong**, it's a lot of setup and configuration, which is just wild to me as DevOps shouldn't be this hard, because at that point I would be debugging to just debug? Wait... what? I ran tests, and they failed, but the main problem I am having is the configuration due to the fact I chose to use ES6 modules, which is not supported by Jest; kinda... I am also using webpack and I will have to use CommonJS modules, which is the default for Jest. I will have to change the export and import statements to CommonJS. Jest is really difficult to setup, its not hard to write or make tests for the functions, documentation has it all, minus a friendly setup guide. Even using a VSCode extension didn't help much. 
 
